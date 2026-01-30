@@ -9,6 +9,7 @@ wheels/
 # Virtual environments
 .venv
 
-# 
 temp/
 logs/
+
+.python-version

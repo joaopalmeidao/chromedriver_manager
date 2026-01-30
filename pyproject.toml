@@ -1,9 +1,9 @@
 [project]
-name = "chromedriver-manager"
-version = "0.1.0"
-description = "Add your description here"
+name = "chromedriver-version-manager"
+version = "0.1.1"
+description = "Chromedriver Version Manager"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "requests>=2.32.5",
 ]

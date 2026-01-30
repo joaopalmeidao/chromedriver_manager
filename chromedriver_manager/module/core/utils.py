@@ -1,10 +1,11 @@
 import re
 import os
 import subprocess
-from urllib.parse import urlparse
 import zipfile
-
+import random
+import string
 import requests
+from urllib.parse import urlparse
 
 from chromedriver_manager.module.config.settings import settings
 
@@ -13,8 +14,11 @@ class Commands:
     GET_DRIVER_VERSION = "chromedriver --version"
     
     if settings.SYSTEM == "Windows":
-        GET_CHROME_VERSION = '''reg query "HKEY_CURRENT_USER\Software\Google\Chrome\BLBeacon" /v version'''
-    
+        GET_CHROME_VERSION = 'reg query "HKEY_CURRENT_USER\Software\Google\Chrome\BLBeacon" /v version'
+
+def random_generator(size: int=10, chars=string.ascii_lowercase + string.digits) -> str:
+    return ''.join(random.choice(chars) for _ in range(size))
+
 def get_version(command):
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', result.stdout + result.stderr)

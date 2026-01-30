@@ -1,11 +1,12 @@
 
 from chromedriver_manager import (
-    get_driver_path
+    ChromeDriverManager
 )
 
 
 def main() -> str:
-    driver_path = get_driver_path()
+    manager = ChromeDriverManager()
+    driver_path = manager.get_driver_path()
     return driver_path
     
 if __name__ == "__main__":

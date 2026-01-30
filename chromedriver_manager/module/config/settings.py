@@ -17,11 +17,9 @@ class Settings:
     
     class Directories(Enum):
         LOGS_PATH = MAIN_PATH / "logs"
-        TEMP_PATH = MAIN_PATH / "temp"
+        DOWNLOAD_PATH = MAIN_PATH / "download"
+        DATA_PATH = MAIN_PATH / "data"
 
-    # Clean up and create necessary directories
-    shutil.rmtree(Directories.TEMP_PATH.value, ignore_errors=True)
-    
     for dir in Directories:
         dir.value.mkdir(parents=True, exist_ok=True)
 

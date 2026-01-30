@@ -1,5 +1,5 @@
 
-from chromedriver_manager.module.manager import (
+from chromedriver_manager import (
     get_driver_path
 )
 

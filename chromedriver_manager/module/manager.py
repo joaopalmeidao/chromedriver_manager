@@ -67,27 +67,21 @@ class ChromeDriverManager:
             json.dump(cache_data, f, indent=4)
 
     def get_driver_path(self) -> str:
-        # 1. Obtém a versão atual do Chrome instalado
         chrome_version = get_version(Commands.GET_CHROME_VERSION)
         logger.info(f"Chrome version detected: {chrome_version}")
         
-        # 2. Verifica o Cache
         cache = self._load_cache()
         cached_version = cache.get("chrome_version")
         cached_path = cache.get("driver_path")
 
-        # Se a versão for a mesma e o arquivo ainda existir no disco
         if cached_version == chrome_version and cached_path and os.path.exists(cached_path):
             logger.info(f"Driver cached found for Chrome {chrome_version} at: {cached_path}")
             self.driver_path = cached_path
             return cached_path
 
-        # 3. Se não houver cache válido, prossegue com o fluxo original
         logger.info("No valid cache found. Downloading new driver...")
 
         # driver_version = get_version(Commands.GET_DRIVER_VERSION)
-        # Nota: Dependendo da sua implementação de get_version, pode ser redundante
-        # se o fetch_data_from_api já resolve isso, mas mantive o fluxo original.
         
         data = fetch_data_from_api()
 
@@ -116,7 +110,6 @@ class ChromeDriverManager:
         
         self.driver_path = driver_path
         
-        # 4. Salva no cache após o sucesso
         self._save_cache(chrome_version, driver_path)
         
         return driver_path

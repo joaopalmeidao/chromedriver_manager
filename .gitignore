@@ -13,4 +13,6 @@ download/
 logs/
 data/
 
+driver_download.lock
+
 .python-version

@@ -8,6 +8,9 @@ import requests
 from urllib.parse import urlparse
 
 from chromedriver_manager.module.config.settings import settings
+from chromedriver_manager.module.config.logger import get_logger
+
+logger = get_logger(__name__)
 
 class Commands:
     GET_CHROME_VERSION = 'google-chrome --version'
@@ -56,16 +59,16 @@ def find_download_link(downloader_info: dict) -> str:
 
 def unzip_file(zip_path: str, extract_to: str = "zipContent", delete_zip_after: bool = True):
     if not os.path.exists(zip_path):
-        print(f"Erro: O arquivo '{zip_path}' não foi encontrado.")
+        logger.error(f"Erro: O arquivo '{zip_path}' não foi encontrado.")
         return
 
-    print(f"Iniciando extração de: {zip_path}")
+    logger.info(f"Iniciando extração de: {zip_path}")
     
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(extract_to)
     
     caminho_absoluto = os.path.abspath(extract_to)
-    print(f"Extração concluída. Arquivos extraídos para: {caminho_absoluto}")
+    logger.info(f"Extração concluída. Arquivos extraídos para: {caminho_absoluto}")
 
     if delete_zip_after:
         os.remove(zip_path)

@@ -35,6 +35,9 @@ class Settings:
         PLATFORM = "linux"
         PLATFORM_ARCH = f"{PLATFORM}{ARCHITECTURE}"
         EXECUTABLE_NAME = "chromedriver"
+
+        PLATFORM_ARCH = "linux64" if PLATFORM_ARCH == "linux86" else PLATFORM_ARCH
+
     # elif SYSTEM == "Darwin":
     #     PLATFORM = "mac"
     #     PLATFORM_ARCH = f"{PLATFORM}-{ARCHITECTURE}"

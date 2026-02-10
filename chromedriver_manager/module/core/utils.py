@@ -85,4 +85,9 @@ def get_chrome_driver_path(zip_path: str, extract_to: str = "zipContent", delete
         )
     if not os.path.exists(driver_path):
         raise FileNotFoundError(f"O ChromeDriver não foi encontrado em: {driver_path}")
+    
+    if settings.SYSTEM == "Linux":
+        logger.info(f"Setting execution permission for: {driver_path}")
+        os.chmod(driver_path, 0o755)
+
     return driver_path

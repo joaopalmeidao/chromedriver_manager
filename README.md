@@ -21,3 +21,10 @@ Ideal para automações com Selenium que quebram frequentemente devido a atualiz
 ```bash
 pip install chromedriver-version-manager
 ```
+
+comandos para publicar na pypi:
+
+```bash
+uv build
+twine upload dist/*
+```

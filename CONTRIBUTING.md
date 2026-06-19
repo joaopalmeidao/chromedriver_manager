@@ -3,7 +3,7 @@
 ## Setup
 
 ```bash
-git clone https://github.com/joaopalmeidao/chromedriver-version-manager.git
+git clone https://github.com/joaopalmeidao/chromedriver_manager.git
 cd chromedriver-version-manager
 
 pip install uv
